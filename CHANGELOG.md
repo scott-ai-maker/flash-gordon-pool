@@ -7,6 +7,21 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.4.0] — 2026-03-14
+
+### Changed
+
+- **Coaching section** — full redesign to reflect Flash's current focus on going pro
+  - Removed all active booking CTAs and pricing
+  - Added honest status banner: coaching is not open; 100% focus is on the pro tour
+  - Added waitlist/newsletter email capture with success confirmation state
+  - Added three waitlist perks: First Access, Insider Training Updates, Locked-In Rates
+  - Future coaching tiers kept as a locked preview ("Opens After Pro Tour" overlay) to sustain interest
+  - TODO comment left in waitlist form to wire up to email service (Mailchimp, ConvertKit, Resend, etc.)
+- Bumped version to 0.4.0
+
+---
+
 ## [0.3.0] — 2026-03-14
 
 ### Changed
