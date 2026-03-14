@@ -5,9 +5,9 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 const stats = [
-  { num: "700", label: "Fargo Rating at 17" },
-  { num: "25 Yrs", label: "Away From The Game" },
-  { num: "2029", label: "Pro Tour Target" },
+  { num: "15+", label: "YEARS EXPERIENCE" },
+  { num: "620+", label: "WPB RATED" },
+  { num: "Back", label: "& BETTER" },
 ];
 
 export default function About() {
@@ -83,22 +83,22 @@ export default function About() {
             <span className="section-label">Origin Story</span>
             <h2 className="font-orbitron font-black text-4xl sm:text-5xl leading-tight mt-2 mb-6">
               The Man Behind{" "}
-              <span className="text-[#F5C400] text-shadow-gold">The Comeback</span>
+              <span className="text-[#F5C400] text-shadow-gold">The Legend</span>
             </h2>
 
             <p className="font-exo text-lg font-semibold text-[#C0C0C0] mb-4 italic">
-              At 17 he was rated 700 Fargo (BU rating comparison). Then life happened. 25 years, a family raised, and a burning question left unanswered. Now at 54, Flash Gordon is back at the table — and the answer is yes.
+              They call him Flash — not because he&apos;s fast, but because when he steps to the table, the room lights up.
             </p>
 
             <div className="space-y-4 font-exo text-[#9ab0c8] leading-relaxed">
               <p>
-                Scott Gordon picked up a cue at 14 and by 17 had earned a 700 Fargo rating (BU rating comparison) — elite by any measure. He played with the instincts of someone twice his age: fast, decisive, impossible to rattle. Then he made a choice most competitors never do. He put the cue down and raised his family.
+                Scott Gordon picked up his first cue at ten years old in Fitchburg, MA. By seventeen he was competing. By twenty he had a plan — pro tour by twenty-two. Then life had other ideas. He met the woman who would become his wife, started a family, and made the choice to be present for his son as he grew up. The cue went in the case.
               </p>
               <p>
-                Twenty-five years away from the game. Zero regrets. But the talent doesn&apos;t retire just because the player does. In 2026, Scott Gordon returned to the table — and Flash Gordon was born. The goal: reach the national pro tour by 2029. The approach: the same one that made him elite the first time. Fast. Decisive. Unstoppable.
+                Twenty-five years passed. Pool had a resurgence and something in Scott woke up. He came back a year ago — joined a league with no practice and got humbled fast. Rated 450. Crushed repeatedly. But he kept showing up. Today he trains daily on a Brunswick Gold Crown 9ft table with Simonis 870 felt in his Fitchburg basement, running a McDermott H1752 cue with a Defy carbon fiber shaft. WPB app rated 620 and climbing fast.
               </p>
               <p>
-                His inspirations are Efren Reyes — quiet genius, Buddy &quot;The Rifleman&quot; Hall — old-school grit, and Fedor Gorst — technically flawless modern elite. Flash Gordon plays 9-Ball, 10-Ball, 8-Ball, One Pocket, and Banks. He is tracked on FargoRate and rising.
+                This isn&apos;t just a comeback story. This is what happens when a lifelong dream refuses to die. The pro tour is not a fantasy — it&apos;s a target. And Flash Gordon Pool is the road to get there.
               </p>
             </div>
 
@@ -106,7 +106,7 @@ export default function About() {
             <div className="mt-8 pt-6 border-t border-[#00BFFF]/10 flex items-center gap-4">
               <div>
                 <p className="font-orbitron text-xl font-bold text-white">Scott Gordon</p>
-                <p className="font-exo text-sm text-[#F5C400] tracking-wider">aka Flash Gordon — The Comeback</p>
+                <p className="font-exo text-sm text-[#F5C400] tracking-wider">aka Flash Gordon Pool</p>
               </div>
               <div className="flex-1 h-px bg-gradient-to-r from-[#00BFFF]/30 to-transparent" />
             </div>

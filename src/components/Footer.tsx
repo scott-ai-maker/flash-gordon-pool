@@ -72,7 +72,7 @@ export default function Footer() {
                 { label: "YT", href: "https://www.youtube.com/@FlashGordonPool" },
                 { label: "IG", href: "https://www.instagram.com/flashgordonpool" },
                 { label: "TT", href: "https://www.tiktok.com/@flashgordonpool" },
-                { label: "FB", href: "https://www.facebook.com/FlashGordonPool" },
+                { label: "FB", href: "https://www.facebook.com/profile.php?id=61574799655550" },
               ].map((s) => (
                 <a
                   key={s.label}
