@@ -51,10 +51,10 @@ export default function Gallery() {
         >
           <span className="section-label">Visual Chronicle</span>
           <h2 className="font-orbitron font-black text-4xl sm:text-5xl mt-2 mb-4">
-            The <span className="text-[#F5C400] text-shadow-gold">Gallery</span>
+            The <span className="text-[#C9A84C] text-shadow-gold">Gallery</span>
           </h2>
           <p className="font-exo text-[#9ab0c8] max-w-xl mx-auto">
-            Flash Gordon at the table, in the arena, and on the road to 2029.
+            Flash Gordon at the table, in the arena, and on the road to the pro tour.
           </p>
         </motion.div>
 

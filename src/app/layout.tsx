@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Flash Gordon Pool | Professional Pool Player & Coach",
+  title: "Flash Gordon Pool | The Comeback Nobody Saw Coming",
   description:
-    "Flash Gordon Pool — Scott Gordon. Professional billiards player, coach, and sci-fi space warrior of the pool table. Book coaching sessions, follow tournament results, and join the legend.",
-  keywords: ["pool player", "billiards coach", "Flash Gordon Pool", "Scott Gordon", "pool coaching", "billiards"],
+    "Scott Gordon aka Flash Gordon Pool. Fitchburg, MA player on a cinematic comeback journey from WPB 450 to 620 and climbing, with eyes on the pro tour.",
+  keywords: ["pool player", "billiards", "Flash Gordon Pool", "Scott Gordon", "WPB rating", "Fitchburg MA"],
   openGraph: {
     title: "Flash Gordon Pool",
-    description: "Professional billiards player. Sci-fi space warrior. Coach. Legend in the making.",
+    description: "The comeback nobody saw coming. Follow the journey to the pro tour.",
     type: "website",
   },
 };

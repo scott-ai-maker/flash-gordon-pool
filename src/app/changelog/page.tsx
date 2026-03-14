@@ -2,6 +2,47 @@ import Link from "next/link";
 
 const releases = [
   {
+    version: "0.6.0",
+    date: "2026-03-14",
+    changes: [
+      {
+        type: "Changed",
+        items: [
+          "Conversion optimization pass across Hero, Contact, and mobile navigation",
+          "Added hero CTA cluster for New Clips, Sponsor/Media, and Mission Brief entry",
+          "Added mission-brief signup module and purpose-based contact channels (Media, Sponsors, Events)",
+          "Added mobile sticky conversion bar for Contact Flash and Watch Clips actions",
+          "Improved CTA hierarchy to convert visitors into followers, inquiries, and warm leads",
+        ],
+      },
+    ],
+  },
+  {
+    version: "0.5.0",
+    date: "2026-03-14",
+    changes: [
+      {
+        type: "Changed",
+        items: [
+          "Hero redesigned with cinematic ESPN-style opening, updated stats, and WPB/Fargo disclaimer",
+          "Navigation updated: Results renamed to The Journey, coaching links removed, Book Now now scrolls to contact",
+          "About section fully aligned to the authentic comeback story and updated equipment/training narrative",
+          "Tournament Results replaced with The Journey timeline road map (2024 return to 2027+ pro tour target)",
+          "Contact section rewritten from form-style to cinematic invitation style with updated location and social channels",
+          "Footer rebuilt with social icons, updated links, 2026 copyright, and brand tagline",
+          "Gold accent system updated to brand color #C9A84C and global background polish improved",
+        ],
+      },
+      {
+        type: "Removed",
+        items: [
+          "Coaching section removed from homepage flow",
+          "Coaching references removed from navigation and primary CTAs",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.2.0",
     date: "2026-03-14",
     changes: [
@@ -13,7 +54,7 @@ const releases = [
           "About subheadline: \"They call him Flash — not because he's fast, but because when he steps to the table, the room lights up.\"",
           "About stats updated: 15+ Years Experience | 620+ WPB Rated | Back & Better",
           "About signature tagline updated to \"aka Flash Gordon Pool\"",
-          "Facebook URL corrected to real profile in Contact and Footer (profile.php?id=61574799655550)",
+          "Facebook URL corrected in Contact and Footer",
         ],
       },
     ],
@@ -28,11 +69,10 @@ const releases = [
           "Initial site launch",
           "Hero section with animated tagline and CTA",
           "About section with origin story and stats",
-          "Tournaments section",
-          "Coaching section with packages and booking CTA",
+          "Results section",
           "Gallery section",
           "Contact section with form and social links (YouTube, Instagram, TikTok, Facebook)",
-          "Footer with navigation, services, and connect links",
+          "Footer with navigation and connect links",
           "Responsive mobile-first layout",
           "Sci-fi dark theme with electric blue and gold accent palette",
           "Framer Motion scroll animations throughout",
@@ -45,7 +85,7 @@ const releases = [
 
 const typeColor: Record<string, string> = {
   Added: "text-[#00BFFF]",
-  Changed: "text-[#F5C400]",
+  Changed: "text-[#C9A84C]",
   Fixed: "text-emerald-400",
   Removed: "text-red-400",
 };
@@ -70,7 +110,7 @@ export default function ChangelogPage() {
           </Link>
           <p className="font-orbitron text-xs text-[#00BFFF] tracking-widest uppercase mb-2">Release Notes</p>
           <h1 className="font-orbitron font-black text-4xl sm:text-5xl text-white mb-4">
-            Change<span className="text-[#F5C400]">log</span>
+            Change<span className="text-[#C9A84C]">log</span>
           </h1>
           <p className="font-exo text-[#9ab0c8]">
             Version history for FlashGordonPool.com. Follows{" "}

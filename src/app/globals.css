@@ -6,7 +6,7 @@
 
 :root {
   --electric: #00BFFF;
-  --gold: #F5C400;
+  --gold: #C9A84C;
   --navy: #0d1b2a;
   --navy-dark: #080f18;
   --chrome: #C0C0C0;
@@ -18,7 +18,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #080f18;
+  background:
+    radial-gradient(circle at 15% -5%, rgba(0,191,255,0.12), transparent 35%),
+    radial-gradient(circle at 85% 0%, rgba(201,168,76,0.12), transparent 30%),
+    #080f18;
   color: #e8e8e8;
   font-family: "Exo 2", sans-serif;
   overflow-x: hidden;
@@ -34,7 +37,7 @@ body {
   .font-orbitron { font-family: "Orbitron", sans-serif; }
   .font-exo { font-family: "Exo 2", sans-serif; }
   .text-electric { color: #00BFFF; }
-  .text-gold { color: #F5C400; }
+  .text-gold { color: #C9A84C; }
 
   .glow-electric {
     box-shadow: 0 0 20px rgba(0,191,255,0.4), 0 0 40px rgba(0,191,255,0.2);
@@ -43,13 +46,13 @@ body {
     box-shadow: 0 0 40px rgba(0,191,255,0.6), 0 0 80px rgba(0,191,255,0.3);
   }
   .glow-gold {
-    box-shadow: 0 0 20px rgba(245,196,0,0.4), 0 0 40px rgba(245,196,0,0.2);
+    box-shadow: 0 0 20px rgba(201,168,76,0.4), 0 0 40px rgba(201,168,76,0.2);
   }
   .text-shadow-electric {
     text-shadow: 0 0 20px rgba(0,191,255,0.6), 0 0 40px rgba(0,191,255,0.3);
   }
   .text-shadow-gold {
-    text-shadow: 0 0 20px rgba(245,196,0,0.6), 0 0 40px rgba(245,196,0,0.3);
+    text-shadow: 0 0 20px rgba(201,168,76,0.6), 0 0 40px rgba(201,168,76,0.3);
   }
   .grid-bg {
     background-image:
@@ -89,6 +92,6 @@ body {
 }
 .hr-gold {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #F5C40055, #F5C400, #F5C40055, transparent);
+  background: linear-gradient(90deg, transparent, #C9A84C55, #C9A84C, #C9A84C55, transparent);
   border: none;
 }

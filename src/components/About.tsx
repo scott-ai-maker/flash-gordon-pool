@@ -7,7 +7,7 @@ import Image from "next/image";
 const stats = [
   { num: "15+", label: "YEARS EXPERIENCE" },
   { num: "620+", label: "WPB RATED" },
-  { num: "Back", label: "& BETTER" },
+  { num: "BACK", label: "& BETTER" },
 ];
 
 export default function About() {
@@ -51,10 +51,10 @@ export default function About() {
               </div>
 
               {/* Sci-fi corners */}
-              <div className="absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-[#F5C400]" />
-              <div className="absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-[#F5C400]" />
-              <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-[#F5C400]" />
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-[#F5C400]" />
+              <div className="absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-[#C9A84C]" />
+              <div className="absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-[#C9A84C]" />
+              <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-[#C9A84C]" />
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-[#C9A84C]" />
             </div>
 
             {/* Stats */}
@@ -83,7 +83,7 @@ export default function About() {
             <span className="section-label">Origin Story</span>
             <h2 className="font-orbitron font-black text-4xl sm:text-5xl leading-tight mt-2 mb-6">
               The Man Behind{" "}
-              <span className="text-[#F5C400] text-shadow-gold">The Legend</span>
+              <span className="text-[#C9A84C] text-shadow-gold">The Legend</span>
             </h2>
 
             <p className="font-exo text-lg font-semibold text-[#C0C0C0] mb-4 italic">
@@ -106,7 +106,7 @@ export default function About() {
             <div className="mt-8 pt-6 border-t border-[#00BFFF]/10 flex items-center gap-4">
               <div>
                 <p className="font-orbitron text-xl font-bold text-white">Scott Gordon</p>
-                <p className="font-exo text-sm text-[#F5C400] tracking-wider">aka Flash Gordon Pool</p>
+                <p className="font-exo text-sm text-[#C9A84C] tracking-wider">aka Flash Gordon Pool</p>
               </div>
               <div className="flex-1 h-px bg-gradient-to-r from-[#00BFFF]/30 to-transparent" />
             </div>

@@ -33,7 +33,7 @@ const socialLinks = [
   },
   {
     name: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=61574799655550",
+    href: "https://www.facebook.com/FlashGordonPool",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
         <path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23.1 10.1 24v-8.4H7.1v-3.5h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.2h3.4l-.5 3.5h-2.8V24C19.6 23.1 24 18.1 24 12.1z"/>
@@ -45,19 +45,21 @@ const socialLinks = [
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "", lastName: "", email: "", subject: "", message: "",
-  });
+  const [briefEmail, setBriefEmail] = useState("");
+  const [joinedBrief, setJoinedBrief] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleMissionBriefSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire up to your backend / email service
-    setSubmitted(true);
+    if (!briefEmail) return;
+
+    const subject = encodeURIComponent("Mission Brief Signup");
+    const body = encodeURIComponent(
+      `Please add me to the Flash Gordon Pool mission brief updates.\n\nEmail: ${briefEmail}`
+    );
+
+    window.location.href = `mailto:flash@flashgordonpool.com?subject=${subject}&body=${body}`;
+    setJoinedBrief(true);
+    setBriefEmail("");
   };
 
   return (
@@ -79,26 +81,41 @@ export default function Contact() {
         >
           <span className="section-label">Make Contact</span>
           <h2 className="font-orbitron font-black text-4xl sm:text-5xl mt-2 mb-4">
-            Get In <span className="text-[#F5C400] text-shadow-gold">Touch</span>
+            Join The <span className="text-[#C9A84C] text-shadow-gold">Mission</span>
           </h2>
           <p className="font-exo text-[#9ab0c8] max-w-xl mx-auto">
-            Booking inquiries, media requests, sponsor conversations, or just want to follow the comeback? Flash is ready.
+            This is not a formality. It is an invitation. Follow the comeback, talk media, discuss sponsorships, or reach out directly from Fitchburg to wherever you are.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
 
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-2 space-y-6"
+            className="space-y-6"
           >
             {[
-              { icon: "✉", label: "Email", value: "flash@flashgordonpool.com", href: "mailto:flash@flashgordonpool.com" },
-              { icon: "☎", label: "Phone / Text", value: "Add your number here", href: "tel:+10000000000" },
-              { icon: "◉", label: "Based In", value: "Add your location here", href: null },
+              {
+                icon: "✉",
+                label: "Email",
+                value: "flash@flashgordonpool.com",
+                href: "mailto:flash@flashgordonpool.com",
+              },
+              {
+                icon: "◉",
+                label: "Based In",
+                value: "Fitchburg, MA",
+                href: null,
+              },
+              {
+                icon: "⚡",
+                label: "Website",
+                value: "flashgordonpool.com",
+                href: "https://flashgordonpool.com",
+              },
             ].map((info) => (
               <div
                 key={info.label}
@@ -108,7 +125,12 @@ export default function Contact() {
                 <div>
                   <p className="font-orbitron text-xs text-[#C0C0C0] tracking-wider uppercase mb-1">{info.label}</p>
                   {info.href ? (
-                    <a href={info.href} className="font-exo text-white hover:text-[#00BFFF] transition-colors">
+                    <a
+                      href={info.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-exo text-white hover:text-[#00BFFF] transition-colors"
+                    >
                       {info.value}
                     </a>
                   ) : (
@@ -136,112 +158,114 @@ export default function Contact() {
                 ))}
               </div>
             </div>
+
+            <a
+              href="mailto:flash@flashgordonpool.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 font-orbitron text-xs font-bold tracking-widest uppercase px-6 py-3 rounded border border-[#C9A84C]/70 text-[#C9A84C] hover:bg-[#C9A84C]/10 hover:border-[#C9A84C] transition-all duration-300"
+            >
+              Direct Message Flash
+              <span>↗</span>
+            </a>
           </motion.div>
 
-          {/* Contact form */}
+          {/* Invitation panel */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="lg:col-span-3"
+            className="relative rounded-xl border border-[#00BFFF]/20 bg-[#080f18]/70 p-6 sm:p-8 lg:p-10 backdrop-blur-sm"
           >
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex flex-col items-center justify-center text-center py-16 border border-[#00BFFF]/30 rounded-lg bg-[#080f18]/60"
-              >
-                <div className="text-5xl text-[#00BFFF] mb-4">✓</div>
-                <h3 className="font-orbitron font-bold text-2xl text-white mb-2">Transmission Received</h3>
-                <p className="font-exo text-[#9ab0c8]">Flash will be in touch shortly.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    { id: "firstName", label: "First Name", placeholder: "Your first name" },
-                    { id: "lastName", label: "Last Name", placeholder: "Your last name" },
-                  ].map((f) => (
-                    <div key={f.id}>
-                      <label className="font-orbitron text-xs text-[#C0C0C0] tracking-wider uppercase block mb-2">
-                        {f.label}
-                      </label>
-                      <input
-                        type="text"
-                        id={f.id}
-                        name={f.id}
-                        placeholder={f.placeholder}
-                        required
-                        value={formData[f.id as keyof typeof formData]}
-                        onChange={handleChange}
-                        className="w-full bg-[#080f18]/80 border border-[#00BFFF]/20 rounded px-4 py-3 font-exo text-white placeholder-[#9ab0c8]/50 focus:outline-none focus:border-[#00BFFF]/60 focus:bg-[#080f18] transition-colors"
-                      />
-                    </div>
-                  ))}
-                </div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,168,76,0.14)_0%,transparent_65%)] pointer-events-none" />
+            <div className="relative z-10">
+              <p className="font-orbitron text-xs text-[#00BFFF] tracking-[0.25em] uppercase mb-3">Open Channels</p>
+              <h3 className="font-orbitron text-2xl sm:text-3xl font-bold text-white leading-tight mb-4">
+                For media, sponsors, collabs, and fans tracking every rack.
+              </h3>
+              <p className="font-exo text-[#9ab0c8] leading-relaxed mb-8">
+                If you believe in disciplined comebacks, high-performance training, and big goals pursued in public, this is your lane.
+                Connect and be part of what comes next.
+              </p>
 
-                <div>
-                  <label className="font-orbitron text-xs text-[#C0C0C0] tracking-wider uppercase block mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-[#080f18]/80 border border-[#00BFFF]/20 rounded px-4 py-3 font-exo text-white placeholder-[#9ab0c8]/50 focus:outline-none focus:border-[#00BFFF]/60 transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label className="font-orbitron text-xs text-[#C0C0C0] tracking-wider uppercase block mb-2">
-                    What can Flash do for you?
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full bg-[#080f18]/80 border border-[#00BFFF]/20 rounded px-4 py-3 font-exo text-white focus:outline-none focus:border-[#00BFFF]/60 transition-colors"
+              <div className="grid sm:grid-cols-3 gap-3 mb-8">
+                {[
+                  {
+                    label: "Media",
+                    copy: "Interview requests and feature stories.",
+                    href: "mailto:flash@flashgordonpool.com?subject=Media%20Request",
+                  },
+                  {
+                    label: "Sponsors",
+                    copy: "Partnership opportunities and brand fit.",
+                    href: "mailto:flash@flashgordonpool.com?subject=Sponsor%20Inquiry",
+                  },
+                  {
+                    label: "Events",
+                    copy: "Appearances, collabs, and community events.",
+                    href: "mailto:flash@flashgordonpool.com?subject=Event%20Inquiry",
+                  },
+                ].map((channel) => (
+                  <a
+                    key={channel.label}
+                    href={channel.href}
+                    className="rounded-lg border border-[#00BFFF]/20 bg-[#0a1628]/70 p-4 hover:border-[#00BFFF]/50 transition-colors"
                   >
-                    <option value="" className="bg-[#080f18]">Select an option...</option>
-                    <option value="coaching" className="bg-[#080f18]">Coaching / Lesson Inquiry</option>
-                    <option value="sponsor" className="bg-[#080f18]">Sponsor / Partnership</option>
-                    <option value="media" className="bg-[#080f18]">Media / Interview Request</option>
-                    <option value="appearance" className="bg-[#080f18]">Tournament Appearance</option>
-                    <option value="following" className="bg-[#080f18]">Just Following The Comeback</option>
-                    <option value="other" className="bg-[#080f18]">Other</option>
-                  </select>
-                </div>
+                    <p className="font-orbitron text-xs tracking-widest uppercase text-[#00BFFF] mb-2">{channel.label}</p>
+                    <p className="font-exo text-xs text-[#9ab0c8] leading-relaxed">{channel.copy}</p>
+                  </a>
+                ))}
+              </div>
 
-                <div>
-                  <label className="font-orbitron text-xs text-[#C0C0C0] tracking-wider uppercase block mb-2">
-                    Your Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Tell Flash what you need..."
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full bg-[#080f18]/80 border border-[#00BFFF]/20 rounded px-4 py-3 font-exo text-white placeholder-[#9ab0c8]/50 focus:outline-none focus:border-[#00BFFF]/60 transition-colors resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full font-orbitron text-sm font-bold tracking-widest uppercase py-4 rounded bg-[#00BFFF] text-black hover:bg-white transition-all duration-300 glow-electric flex items-center justify-center gap-3"
+              <div className="grid sm:grid-cols-2 gap-3">
+                <a
+                  href="https://www.youtube.com/@FlashGordonPool"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-orbitron text-xs text-center font-bold tracking-widest uppercase px-4 py-3 rounded bg-[#00BFFF] text-black hover:bg-white transition-all duration-300"
                 >
-                  Send Transmission
-                  <span className="text-base">▶</span>
-                </button>
-              </form>
-            )}
+                  Watch on YouTube
+                </a>
+                <a
+                  href="https://www.instagram.com/flashgordonpool"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-orbitron text-xs text-center font-bold tracking-widest uppercase px-4 py-3 rounded border border-[#00BFFF]/50 text-[#00BFFF] hover:bg-[#00BFFF]/10 transition-all duration-300"
+                >
+                  Follow on Instagram
+                </a>
+              </div>
+
+              <div id="mission-brief" className="mt-8 pt-6 border-t border-[#00BFFF]/15">
+                <p className="font-orbitron text-xs text-[#C9A84C] tracking-[0.25em] uppercase mb-2">Mission Brief</p>
+                <p className="font-exo text-sm text-[#9ab0c8] mb-4">
+                  Get major rating jumps, tournament milestones, and comeback updates first.
+                </p>
+
+                {joinedBrief ? (
+                  <div className="rounded-lg border border-[#00BFFF]/30 bg-[#00BFFF]/10 px-4 py-3 font-exo text-sm text-[#cfefff]">
+                    Mission brief request queued. Check your email draft and send to confirm.
+                  </div>
+                ) : (
+                  <form onSubmit={handleMissionBriefSubmit} className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      required
+                      value={briefEmail}
+                      onChange={(e) => setBriefEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      className="flex-1 bg-[#080f18]/80 border border-[#00BFFF]/20 rounded px-4 py-3 font-exo text-white placeholder-[#9ab0c8]/50 focus:outline-none focus:border-[#00BFFF]/60 transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      className="font-orbitron text-xs font-bold tracking-widest uppercase px-5 py-3 rounded bg-[#00BFFF] text-black hover:bg-white transition-colors"
+                    >
+                      Join Updates
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
           </motion.div>
 
         </div>

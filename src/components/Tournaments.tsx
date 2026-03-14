@@ -1,177 +1,104 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-// Add tournament results here as Flash competes in major events.
-// Each entry: { name, location, date, format, result, tier }
-// tier options: "gold" (1st), "silver" (2nd/finalist), "blue" (top 8 / notable finish)
-const recentResults: { name: string; location: string; date: string; format: string; result: string; tier: string }[] = [];
-
-const highlights = [
+const journeyMilestones = [
   {
-    icon: "★",
-    title: "Early Years — Fitchburg, MA",
-    desc: "Picked up a cue at ten. Competing by seventeen. Had the game, had the plan. Life had other ideas — and Flash made the right call. The cue went in the case.",
+    year: "2024",
+    title: "Returned to Competitive Pool",
+    description: "Stepped back into league competition after 25 years away and entered at WPB rated 450.",
   },
   {
-    icon: "▲",
-    title: "The Return — 2025",
-    desc: "Jumped back in with no practice — joined a league and got humbled fast. Rated 450. Crushed repeatedly. Kept showing up. WPB rating now 620 and climbing.",
+    year: "2024",
+    title: "Structured Training Began",
+    description: "Built a disciplined practice framework and started tracking every session with intent.",
   },
   {
-    icon: "◆",
-    title: "Target: Pro Tour",
-    desc: "Daily training on a Brunswick Gold Crown 9ft with Simonis 870 felt. Running a McDermott H1752 with a Defy carbon fiber shaft. The pro tour is the target — not a fantasy.",
+    year: "2025",
+    title: "Rating Climbs to 500+",
+    description: "Steady improvement translated into measurable results as confidence and consistency rose.",
+  },
+  {
+    year: "2025",
+    title: "Daily Training Locked In",
+    description: "A non-negotiable daily training rhythm became the foundation of long-term progress.",
+  },
+  {
+    year: "2026",
+    title: "WPB App Rated 620 and Rising",
+    description: "Momentum accelerated with a major ratings jump and clear signs the ceiling is still moving.",
+  },
+  {
+    year: "2026",
+    title: "flashgordonpool.com Launched",
+    description: "The comeback story went public with a digital home built to track the road to pro.",
+  },
+  {
+    year: "2027+",
+    title: "Pro Tour: The Target",
+    description: "The mission stays clear: earn a seat on tour through relentless reps and elite execution.",
   },
 ];
-
-const tierStyles: Record<string, string> = {
-  gold: "bg-[#F5C400]/15 text-[#F5C400] border border-[#F5C400]/40",
-  silver: "bg-[#C0C0C0]/15 text-[#C0C0C0] border border-[#C0C0C0]/40",
-  blue: "bg-[#00BFFF]/15 text-[#00BFFF] border border-[#00BFFF]/40",
-};
 
 export default function Tournaments() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeTab, setActiveTab] = useState<"recent" | "highlights">("recent");
 
   return (
-    <section id="tournaments" className="relative py-24 lg:py-32 bg-[#080f18] overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="journey" className="relative py-24 lg:py-32 bg-[#080f18] overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_30%_at_50%_10%,rgba(201,168,76,0.09)_0%,transparent_80%)]" />
 
-        {/* Header */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <span className="section-label">The Record</span>
+          <span className="section-label">Road Map</span>
           <h2 className="font-orbitron font-black text-4xl sm:text-5xl mt-2 mb-4">
-            Tournament <span className="text-[#F5C400] text-shadow-gold">Results</span>
+            The <span className="text-[#C9A84C] text-shadow-gold">Journey</span>
           </h2>
-          <p className="font-exo text-[#9ab0c8] max-w-xl mx-auto">
-            Every tournament is a data point. Every result is progress. The comeback is being built in public.
+          <p className="font-exo text-[#9ab0c8] max-w-2xl mx-auto">
+            Not a tournament table. A cinematic progression from first return to pro target, built shot by shot in public.
           </p>
         </motion.div>
 
-        {/* Tabs */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center gap-2 mb-10"
-        >
-          {(["recent", "highlights"] as const).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`font-orbitron text-xs tracking-widest uppercase px-6 py-3 rounded border transition-all duration-300 ${
-                activeTab === tab
-                  ? "bg-[#00BFFF] text-black border-[#00BFFF] glow-electric"
-                  : "border-[#00BFFF]/30 text-[#C0C0C0] hover:border-[#00BFFF]/60 hover:text-[#00BFFF]"
-              }`}
-            >
-              {tab === "recent" ? "Recent Results" : "Career Highlights"}
-            </button>
-          ))}
-        </motion.div>
+        <div className="relative max-w-5xl mx-auto">
+          <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#00BFFF]/20 via-[#00BFFF] to-[#C9A84C]/30" />
 
-        {/* Tab content */}
-        <AnimatePresence mode="wait">
-          {activeTab === "recent" ? (
-            <motion.div
-              key="recent"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              {recentResults.length === 0 ? (
-                <div className="rounded-lg border border-[#00BFFF]/20 bg-[#080f18]/60 py-20 flex flex-col items-center justify-center text-center gap-4 px-6">
-                  <div className="text-5xl text-[#00BFFF]/30">◎</div>
-                  <h3 className="font-orbitron font-bold text-white text-xl">No Major Events Yet</h3>
-                  <p className="font-exo text-[#9ab0c8] max-w-md leading-relaxed">
-                    Flash is currently training and competing in local league play. Major tournament results will appear here as the campaign gets underway. Check back — this board is about to get busy.
-                  </p>
-                  <span className="font-orbitron text-xs text-[#00BFFF]/50 tracking-widest uppercase border border-[#00BFFF]/20 rounded px-4 py-2 mt-2">
-                    Season in Progress
-                  </span>
-                </div>
-              ) : (
-                <>
-                  <div className="overflow-x-auto rounded-lg border border-[#00BFFF]/20">
-                    <table className="w-full min-w-[600px]">
-                      <thead>
-                        <tr className="bg-[#0d1b2a] border-b border-[#00BFFF]/20">
-                          {["Tournament", "Location", "Date", "Format", "Result"].map((h) => (
-                            <th
-                              key={h}
-                              className="font-orbitron text-xs text-[#00BFFF] tracking-widest uppercase px-4 py-4 text-left"
-                            >
-                              {h}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {recentResults.map((r, i) => (
-                          <motion.tr
-                            key={i}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={inView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-                            className={`border-b border-[#00BFFF]/10 transition-colors hover:bg-[#00BFFF]/5 ${
-                              r.tier === "gold" ? "bg-[#F5C400]/3" : ""
-                            }`}
-                          >
-                            <td className="font-exo font-semibold text-white px-4 py-4">{r.name}</td>
-                            <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.location}</td>
-                            <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.date}</td>
-                            <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.format}</td>
-                            <td className="px-4 py-4">
-                              <span className={`font-orbitron text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded ${tierStyles[r.tier]}`}>
-                                {r.result}
-                              </span>
-                            </td>
-                          </motion.tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </>
-              )}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="highlights"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="grid sm:grid-cols-3 gap-6"
-            >
-              {highlights.map((h, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="relative bg-[#0d1b2a] border border-[#00BFFF]/20 rounded-lg p-6 hover:border-[#00BFFF]/50 transition-colors group"
+          <div className="space-y-8">
+            {journeyMilestones.map((milestone, index) => {
+              const isRight = index % 2 === 1;
+
+              return (
+                <motion.article
+                  key={`${milestone.year}-${milestone.title}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`relative pl-14 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-8 ${isRight ? "" : ""}`}
                 >
-                  <div className="text-3xl text-[#F5C400] mb-4">{h.icon}</div>
-                  <h3 className="font-orbitron font-bold text-white text-lg mb-3">{h.title}</h3>
-                  <p className="font-exo text-[#9ab0c8] text-sm leading-relaxed">{h.desc}</p>
-                  {/* Corner accent */}
-                  <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#F5C400]/40 group-hover:border-[#F5C400] transition-colors" />
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+                  <div className={`hidden sm:block ${isRight ? "order-1" : "order-2"}`} />
 
+                  <div
+                    className={`relative rounded-lg border border-[#00BFFF]/20 bg-[#0a1628]/80 p-5 sm:p-6 backdrop-blur-sm ${
+                      isRight ? "sm:order-2" : "sm:order-1"
+                    }`}
+                  >
+                    <p className="font-orbitron text-xs tracking-[0.25em] text-[#00BFFF] uppercase mb-2">{milestone.year}</p>
+                    <h3 className="font-orbitron text-xl text-white font-bold mb-3">{milestone.title}</h3>
+                    <p className="font-exo text-[#9ab0c8] leading-relaxed">{milestone.description}</p>
+                  </div>
+
+                  <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 top-6 w-3.5 h-3.5 rounded-full bg-[#00BFFF] shadow-[0_0_0_4px_rgba(10,22,40,1),0_0_0_8px_rgba(0,191,255,0.28)]" />
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -26,7 +26,7 @@ export default function Hero() {
       speed: Math.random() * 0.4 + 0.1,
       alpha: Math.random(),
       alphaDir: Math.random() > 0.5 ? 1 : -1,
-      color: Math.random() > 0.85 ? "#00BFFF" : Math.random() > 0.7 ? "#F5C400" : "#ffffff",
+      color: Math.random() > 0.85 ? "#00BFFF" : Math.random() > 0.7 ? "#C9A84C" : "#ffffff",
     }));
 
     const draw = () => {
@@ -68,8 +68,11 @@ export default function Hero() {
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
       {/* Radial glow backdrop */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_60%,rgba(0,191,255,0.08)_0%,transparent_70%)]" />
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_40%_40%_at_80%_50%,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_90%_75%_at_55%_55%,rgba(0,191,255,0.16)_0%,transparent_72%)]" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_50%_45%_at_18%_22%,rgba(201,168,76,0.16)_0%,transparent_78%)]" />
+
+      {/* Vignette for cinematic tone */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.6)_100%)]" />
 
       {/* Grid overlay */}
       <div className="absolute inset-0 z-0 grid-bg opacity-60" />
@@ -78,7 +81,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-48 z-10 bg-gradient-to-t from-[#080f18] to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
 
           {/* Text content */}
           <div className="order-2 lg:order-1">
@@ -87,7 +90,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <span className="section-label">Professional Pool Player</span>
+              <span className="section-label">Scott Gordon | Fitchburg, MA</span>
             </motion.div>
 
             <motion.h1
@@ -99,7 +102,7 @@ export default function Hero() {
               <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white text-shadow-electric">
                 FLASH
               </span>
-              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#F5C400] text-shadow-gold">
+              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#C9A84C] text-shadow-gold">
                 GORDON
               </span>
               <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#00BFFF] text-shadow-electric">
@@ -113,7 +116,16 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.55 }}
               className="font-exo text-lg sm:text-xl text-[#C0C0C0] max-w-lg mb-8 leading-relaxed"
             >
-              <span className="text-[#F5C400] font-semibold">The comeback nobody saw coming.</span>
+              <span className="text-[#C9A84C] font-semibold">The comeback nobody saw coming.</span>
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.62 }}
+              className="font-exo text-sm sm:text-base text-[#9ab0c8] max-w-xl mb-8"
+            >
+              ESPN-level intensity. Marvel-level aura. One mission: earn a place on the pro tour.
             </motion.p>
 
             <motion.div
@@ -126,14 +138,45 @@ export default function Hero() {
                 href="#about"
                 className="font-orbitron text-sm font-bold tracking-widest uppercase px-8 py-4 rounded bg-[#00BFFF] text-black hover:bg-white transition-all duration-300 glow-electric"
               >
-                Enter the Arena
+                Watch The Comeback
               </a>
               <a
-                href="#coaching"
-                className="font-orbitron text-sm font-bold tracking-widest uppercase px-8 py-4 rounded border border-[#00BFFF]/60 text-[#00BFFF] hover:bg-[#00BFFF]/10 hover:border-[#00BFFF] transition-all duration-300"
+                href="#contact"
+                className="font-orbitron text-sm font-bold tracking-widest uppercase px-8 py-4 rounded border border-[#C9A84C]/70 text-[#C9A84C] hover:bg-[#C9A84C]/10 hover:border-[#C9A84C] transition-all duration-300"
               >
-                Book a Session
+                Connect With Flash
               </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.84 }}
+              className="mt-6 rounded-lg border border-[#00BFFF]/15 bg-[#0a1628]/70 p-4"
+            >
+              <p className="font-orbitron text-[10px] tracking-[0.25em] uppercase text-[#00BFFF] mb-3">Next Move</p>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="https://www.youtube.com/@FlashGordonPool"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-orbitron text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded bg-[#00BFFF] text-black hover:bg-white transition-colors"
+                >
+                  New Clips
+                </a>
+                <a
+                  href="#contact"
+                  className="font-orbitron text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded border border-[#C9A84C]/70 text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors"
+                >
+                  Sponsor / Media
+                </a>
+                <a
+                  href="#mission-brief"
+                  className="font-orbitron text-[10px] font-bold tracking-widest uppercase px-3 py-2 rounded border border-[#00BFFF]/50 text-[#00BFFF] hover:bg-[#00BFFF]/10 transition-colors"
+                >
+                  Mission Brief
+                </a>
+              </div>
             </motion.div>
 
             {/* Stats row */}
@@ -141,18 +184,23 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex gap-8 mt-12 pt-8 border-t border-[#00BFFF]/10"
+              className="mt-12 pt-8 border-t border-[#00BFFF]/10"
             >
-              {[
-                { num: "700", label: "Fargo Rated at 17" },
-                { num: "25 Yrs", label: "Away From The Game" },
-                { num: "2029", label: "Pro Tour Target" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-orbitron font-bold text-2xl text-[#00BFFF]">{stat.num}</p>
-                  <p className="font-exo text-xs text-[#C0C0C0] uppercase tracking-wider mt-1">{stat.label}</p>
-                </div>
-              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                {[
+                  { num: "15+", label: "Years Experience" },
+                  { num: "620+", label: "WPB Rated", footnote: "* WPB app rating. Official Fargo pending." },
+                  { num: "Back", label: "& Better" },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-lg border border-[#00BFFF]/20 bg-[#0a1628]/70 p-4">
+                    <p className="font-orbitron font-bold text-2xl text-[#00BFFF]">{stat.num}</p>
+                    <p className="font-exo text-xs text-[#C0C0C0] uppercase tracking-wider mt-1">{stat.label}</p>
+                    {stat.footnote && (
+                      <p className="font-exo text-[10px] text-[#9ab0c8]/80 mt-2 leading-relaxed">{stat.footnote}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
 
@@ -166,7 +214,7 @@ export default function Hero() {
             <div className="relative">
               {/* Glow rings */}
               <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,191,255,0.25)_0%,transparent_70%)] scale-150 blur-xl" />
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.15)_0%,transparent_70%)] scale-125 blur-2xl" />
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.22)_0%,transparent_70%)] scale-125 blur-2xl" />
 
               {/* Sci-fi frame */}
               <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[480px] lg:h-[480px] rounded-full overflow-hidden border-2 border-[#00BFFF]/40 glow-electric">
@@ -183,10 +231,10 @@ export default function Hero() {
               </div>
 
               {/* Corner accents */}
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#F5C400]" />
-              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#F5C400]" />
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#F5C400]" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#F5C400]" />
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#C9A84C]" />
+              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#C9A84C]" />
+              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#C9A84C]" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#C9A84C]" />
             </div>
           </motion.div>
 

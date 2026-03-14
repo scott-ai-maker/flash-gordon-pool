@@ -7,6 +7,45 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.6.0] — 2026-03-14
+
+### Changed
+
+- **Conversion optimization pass**
+  - Added high-intent CTA cluster in hero (New Clips, Sponsor/Media, Mission Brief)
+  - Added mission-brief micro-funnel in contact panel with email capture flow
+  - Added dedicated contact channel cards for Media, Sponsors, and Events
+  - Added mobile sticky conversion bar (Contact Flash / Watch Clips)
+- **Content funnel clarity**
+  - Improved CTA hierarchy and reduced friction for social follow and sponsor/media actions
+  - Preserved cinematic brand direction while improving conversion paths
+
+---
+
+## [0.5.0] — 2026-03-14
+
+### Changed
+
+- **Brand overhaul and story alignment**
+  - Hero redesigned with cinematic opening style, updated stats, and WPB/Fargo disclaimer
+  - About section rewritten and aligned to authentic origin story and signature voice
+  - "Tournament Results" transformed into "The Journey" cinematic roadmap timeline
+  - Contact section rewritten from generic form style to invitation-first brand messaging
+  - Footer rebuilt with social icons, corrected social links, and 2026 brand copyright/tagline
+- **Navigation and structure updates**
+  - Navigation updated: "Results" renamed to "The Journey"
+  - "Coaching" removed from active nav and homepage flow
+  - "Book Now" CTA rerouted to contact section
+- **Design system updates**
+  - Gold accent normalized to brand value `#C9A84C`
+  - Global background and atmospheric styling refined for premium athlete presentation
+
+### Removed
+
+- `src/components/Coaching.tsx` from active site structure
+
+---
+
 ## [0.4.0] — 2026-03-14
 
 ### Changed

@@ -6,8 +6,7 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Results", href: "#tournaments" },
-  { label: "Coaching", href: "#coaching" },
+  { label: "The Journey", href: "#journey" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
@@ -62,8 +61,8 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#coaching"
-              className="font-orbitron text-xs font-bold tracking-widest uppercase px-5 py-2.5 rounded border border-[#F5C400] text-[#F5C400] hover:bg-[#F5C400] hover:text-black transition-all duration-300 glow-gold"
+              href="#contact"
+              className="font-orbitron text-xs font-bold tracking-widest uppercase px-5 py-2.5 rounded border border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-black transition-all duration-300 glow-gold"
             >
               Book Now
             </a>
@@ -104,9 +103,9 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#coaching"
+                href="#contact"
                 onClick={handleNavClick}
-                className="font-orbitron text-sm font-bold tracking-widest uppercase px-5 py-3 rounded border border-[#F5C400] text-[#F5C400] hover:bg-[#F5C400] hover:text-black transition-all duration-300 text-center mt-2"
+                className="font-orbitron text-sm font-bold tracking-widest uppercase px-5 py-3 rounded border border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-black transition-all duration-300 text-center mt-2"
               >
                 Book Now
               </a>
@@ -114,6 +113,27 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <div className="md:hidden fixed bottom-4 left-4 right-4 z-40 pointer-events-none">
+        <div className="pointer-events-auto rounded-lg border border-[#00BFFF]/25 bg-[#080f18]/95 backdrop-blur-md p-2 shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+          <div className="grid grid-cols-2 gap-2">
+            <a
+              href="#contact"
+              className="font-orbitron text-[10px] font-bold tracking-widest uppercase text-center px-3 py-2.5 rounded bg-[#00BFFF] text-black"
+            >
+              Contact Flash
+            </a>
+            <a
+              href="https://www.youtube.com/@FlashGordonPool"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-orbitron text-[10px] font-bold tracking-widest uppercase text-center px-3 py-2.5 rounded border border-[#C9A84C]/70 text-[#C9A84C]"
+            >
+              Watch Clips
+            </a>
+          </div>
+        </div>
+      </div>
     </motion.nav>
   );
 }
