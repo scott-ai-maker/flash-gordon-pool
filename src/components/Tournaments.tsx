@@ -3,29 +3,26 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
-const recentResults = [
-  { name: "Add Your Tournament Name", location: "City, State", date: "2025", format: "9-Ball", result: "1st Place", tier: "gold" },
-  { name: "Add Your Tournament Name", location: "City, State", date: "2025", format: "8-Ball", result: "2nd Place", tier: "silver" },
-  { name: "Add Your Tournament Name", location: "City, State", date: "2024", format: "One Pocket", result: "Top 8", tier: "blue" },
-  { name: "Add Your Tournament Name", location: "City, State", date: "2024", format: "10-Ball", result: "1st Place", tier: "gold" },
-  { name: "Add Your Tournament Name", location: "City, State", date: "2024", format: "Straight Pool", result: "Top 4", tier: "blue" },
-];
+// Add tournament results here as Flash competes in major events.
+// Each entry: { name, location, date, format, result, tier }
+// tier options: "gold" (1st), "silver" (2nd/finalist), "blue" (top 8 / notable finish)
+const recentResults: { name: string; location: string; date: string; format: string; result: string; tier: string }[] = [];
 
 const highlights = [
   {
     icon: "★",
-    title: "700 Fargo Rating",
-    desc: "Achieved at age 17–18. One of the highest amateur ratings recorded at that age. The baseline Flash Gordon is returning to — and surpassing.",
+    title: "Early Years — Fitchburg, MA",
+    desc: "Picked up a cue at ten. Competing by seventeen. Had the game, had the plan. Life had other ideas — and Flash made the right call. The cue went in the case.",
   },
   {
     icon: "▲",
-    title: "The Return — March 2026",
-    desc: "After 25 years away from competitive pool, Scott Gordon re-entered the arena. Fargo rating active and climbing. The comeback officially begins.",
+    title: "The Return — 2025",
+    desc: "Jumped back in with no practice — joined a league and got humbled fast. Rated 450. Crushed repeatedly. Kept showing up. WPB rating now 620 and climbing.",
   },
   {
     icon: "◆",
-    title: "Target: 730 Fargo by 2029",
-    desc: "The number needed for national pro tour entry. Structured training plan active. Every session tracked. Every drill scored. The graph is trending up.",
+    title: "Target: Pro Tour",
+    desc: "Daily training on a Brunswick Gold Crown 9ft with Simonis 870 felt. Running a McDermott H1752 with a Defy carbon fiber shaft. The pro tour is the target — not a fantasy.",
   },
 ];
 
@@ -92,48 +89,60 @@ export default function Tournaments() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
             >
-              <div className="overflow-x-auto rounded-lg border border-[#00BFFF]/20">
-                <table className="w-full min-w-[600px]">
-                  <thead>
-                    <tr className="bg-[#0d1b2a] border-b border-[#00BFFF]/20">
-                      {["Tournament", "Location", "Date", "Format", "Result"].map((h) => (
-                        <th
-                          key={h}
-                          className="font-orbitron text-xs text-[#00BFFF] tracking-widest uppercase px-4 py-4 text-left"
-                        >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentResults.map((r, i) => (
-                      <motion.tr
-                        key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-                        className={`border-b border-[#00BFFF]/10 transition-colors hover:bg-[#00BFFF]/5 ${
-                          r.tier === "gold" ? "bg-[#F5C400]/3" : ""
-                        }`}
-                      >
-                        <td className="font-exo font-semibold text-white px-4 py-4">{r.name}</td>
-                        <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.location}</td>
-                        <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.date}</td>
-                        <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.format}</td>
-                        <td className="px-4 py-4">
-                          <span className={`font-orbitron text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded ${tierStyles[r.tier]}`}>
-                            {r.result}
-                          </span>
-                        </td>
-                      </motion.tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="font-exo text-xs text-[#9ab0c8]/60 text-center mt-4">
-                * Replace placeholder data with actual tournament results
-              </p>
+              {recentResults.length === 0 ? (
+                <div className="rounded-lg border border-[#00BFFF]/20 bg-[#080f18]/60 py-20 flex flex-col items-center justify-center text-center gap-4 px-6">
+                  <div className="text-5xl text-[#00BFFF]/30">◎</div>
+                  <h3 className="font-orbitron font-bold text-white text-xl">No Major Events Yet</h3>
+                  <p className="font-exo text-[#9ab0c8] max-w-md leading-relaxed">
+                    Flash is currently training and competing in local league play. Major tournament results will appear here as the campaign gets underway. Check back — this board is about to get busy.
+                  </p>
+                  <span className="font-orbitron text-xs text-[#00BFFF]/50 tracking-widest uppercase border border-[#00BFFF]/20 rounded px-4 py-2 mt-2">
+                    Season in Progress
+                  </span>
+                </div>
+              ) : (
+                <>
+                  <div className="overflow-x-auto rounded-lg border border-[#00BFFF]/20">
+                    <table className="w-full min-w-[600px]">
+                      <thead>
+                        <tr className="bg-[#0d1b2a] border-b border-[#00BFFF]/20">
+                          {["Tournament", "Location", "Date", "Format", "Result"].map((h) => (
+                            <th
+                              key={h}
+                              className="font-orbitron text-xs text-[#00BFFF] tracking-widest uppercase px-4 py-4 text-left"
+                            >
+                              {h}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {recentResults.map((r, i) => (
+                          <motion.tr
+                            key={i}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={inView ? { opacity: 1, x: 0 } : {}}
+                            transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
+                            className={`border-b border-[#00BFFF]/10 transition-colors hover:bg-[#00BFFF]/5 ${
+                              r.tier === "gold" ? "bg-[#F5C400]/3" : ""
+                            }`}
+                          >
+                            <td className="font-exo font-semibold text-white px-4 py-4">{r.name}</td>
+                            <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.location}</td>
+                            <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.date}</td>
+                            <td className="font-exo text-[#9ab0c8] px-4 py-4">{r.format}</td>
+                            <td className="px-4 py-4">
+                              <span className={`font-orbitron text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded ${tierStyles[r.tier]}`}>
+                                {r.result}
+                              </span>
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
+              )}
             </motion.div>
           ) : (
             <motion.div

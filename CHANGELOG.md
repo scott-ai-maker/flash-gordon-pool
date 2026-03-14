@@ -7,6 +7,18 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.3.0] — 2026-03-14
+
+### Changed
+
+- **Tournaments section** — removed fake placeholder results from Recent Results tab
+  - Empty state now shows honest "No Major Events Yet" message with "Season in Progress" badge
+  - Results table will render automatically once events are added to `recentResults` array
+- **Career Highlights** — updated to match accurate origin story (Fitchburg roots, WPB 620 rating, real training setup, pro tour target)
+- Bumped version to 0.3.0
+
+---
+
 ## [0.2.0] — 2026-03-14
 
 ### Changed
