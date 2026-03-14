@@ -7,6 +7,18 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.6.1] — 2026-03-14
+
+### Added
+
+- **Google Analytics 4**
+  - Installed `@next/third-parties` for the Next.js 14 App Router integration path
+  - Added `GoogleAnalytics` to the root app layout with measurement ID `G-LYJT5990J1`
+  - Implemented GA4 the Next.js-supported way without raw `gtag` script tags
+  - Enabled tracking across App Router navigations via the official integration
+
+---
+
 ## [0.6.0] — 2026-03-14
 
 ### Changed

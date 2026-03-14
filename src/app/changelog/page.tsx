@@ -2,6 +2,20 @@ import Link from "next/link";
 
 const releases = [
   {
+    version: "0.6.1",
+    date: "2026-03-14",
+    changes: [
+      {
+        type: "Added",
+        items: [
+          "Google Analytics 4 integrated via @next/third-parties for Next.js 14 App Router",
+          "GoogleAnalytics added to root app layout with measurement ID G-LYJT5990J1",
+          "GA4 implemented without raw gtag script tags, using the official optimized integration path",
+        ],
+      },
+    ],
+  },
+  {
     version: "0.6.0",
     date: "2026-03-14",
     changes: [
