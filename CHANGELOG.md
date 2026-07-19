@@ -7,6 +7,25 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.7.0] — 2026-07-19
+
+### Changed
+
+- **Full brand and UX revamp**
+  - Rebuilt homepage sections with a premium, professional cue sports presentation
+  - Modernized visual system in global styles with refined gradients, panels, and typography
+  - Improved mobile navigation and sticky CTA behavior to prevent interaction conflicts
+- **Fan-forward copy system**
+  - Rewrote hero, profile, journey, gallery, contact, navigation, footer, and metadata copy
+  - Shifted messaging to a community-first tone while preserving sponsor/media pathways
+  - Updated CTA language across the site for clearer fan engagement and conversion flow
+- **Production media curation**
+  - Integrated curated portrait and gallery image set for hero, profile, and gallery experiences
+  - Removed deprecated legacy image assets and aligned image documentation
+  - Added responsive `next/image` sizing hints across key components for cleaner performance behavior
+
+---
+
 ## [0.6.1] — 2026-03-14
 
 ### Added

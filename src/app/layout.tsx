@@ -5,11 +5,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Flash Gordon Pool | The Comeback Nobody Saw Coming",
   description:
-    "Scott Gordon aka Flash Gordon Pool. Fitchburg, MA player on a cinematic comeback journey from WPB 450 to 620 and climbing, with eyes on the pro tour.",
-  keywords: ["pool player", "billiards", "Flash Gordon Pool", "Scott Gordon", "WPB rating", "Fitchburg MA"],
+    "Follow Flash Gordon Pool as Scott Gordon documents his cue sports comeback with match clips, training progress, and community updates from Fitchburg, MA.",
+  keywords: ["cue sports comeback", "pool player", "billiards", "Flash Gordon Pool", "Scott Gordon", "WPB rating", "Fitchburg MA", "pool match clips"],
   openGraph: {
     title: "Flash Gordon Pool",
-    description: "The comeback nobody saw coming. Follow the journey to the pro tour.",
+    description: "A fan-forward cue sports platform featuring match clips, training milestones, and the ongoing comeback journey.",
     type: "website",
   },
 };

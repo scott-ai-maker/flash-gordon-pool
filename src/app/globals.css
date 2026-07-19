@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap');
 
 :root {
   --electric: #00BFFF;
@@ -10,6 +10,7 @@
   --navy: #0d1b2a;
   --navy-dark: #080f18;
   --chrome: #C0C0C0;
+  --panel: #0f2237;
   --background: #080f18;
   --foreground: #e8e8e8;
 }
@@ -19,12 +20,14 @@ html { scroll-behavior: smooth; }
 
 body {
   background:
-    radial-gradient(circle at 15% -5%, rgba(0,191,255,0.12), transparent 35%),
-    radial-gradient(circle at 85% 0%, rgba(201,168,76,0.12), transparent 30%),
+    radial-gradient(circle at 8% 6%, rgba(0,191,255,0.18), transparent 30%),
+    radial-gradient(circle at 86% 3%, rgba(201,168,76,0.16), transparent 25%),
+    linear-gradient(140deg, rgba(8,15,24,0.95), rgba(13,27,42,0.9) 42%, rgba(8,15,24,0.98)),
     #080f18;
   color: #e8e8e8;
-  font-family: "Exo 2", sans-serif;
+  font-family: "Manrope", sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Scrollbar */
@@ -34,8 +37,8 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,191,255,0.6); }
 
 @layer utilities {
-  .font-orbitron { font-family: "Orbitron", sans-serif; }
-  .font-exo { font-family: "Exo 2", sans-serif; }
+  .font-orbitron { font-family: "Sora", sans-serif; }
+  .font-exo { font-family: "Manrope", sans-serif; }
   .text-electric { color: #00BFFF; }
   .text-gold { color: #C9A84C; }
 
@@ -60,22 +63,45 @@ body {
       linear-gradient(90deg, rgba(0,191,255,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
   }
+
+  .brand-panel {
+    background: linear-gradient(165deg, rgba(16,34,54,0.86), rgba(8,15,24,0.82));
+    border: 1px solid rgba(0,191,255,0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 16px 40px rgba(0,0,0,0.28);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .brand-title {
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .noise-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    opacity: 0.03;
+    pointer-events: none;
+  }
 }
 
 /* Section label */
 .section-label {
   display: inline-block;
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  font-family: "Sora", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #00BFFF;
-  border: 1px solid rgba(0,191,255,0.3);
+  border: 1px solid rgba(0,191,255,0.25);
   border-radius: 9999px;
-  padding: 0.35rem 1rem;
+  padding: 0.4rem 1rem;
   margin-bottom: 1rem;
-  background: rgba(0,191,255,0.05);
+  background: linear-gradient(90deg, rgba(0,191,255,0.11), rgba(0,191,255,0.04));
 }
 
 /* Sci-fi scan line animation */

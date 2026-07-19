@@ -6,38 +6,33 @@ import { motion, useInView } from "framer-motion";
 const journeyMilestones = [
   {
     year: "2024",
-    title: "Returned to Competitive Pool",
-    description: "Stepped back into league competition after 25 years away and entered at WPB rated 450.",
+    title: "Competitive Return",
+    description: "Stepped back into league competition after 25 years away and began sharing the process publicly.",
   },
   {
     year: "2024",
-    title: "Structured Training Began",
-    description: "Built a disciplined practice framework and started tracking every session with intent.",
+    title: "Training System Built",
+    description: "Built a repeatable practice system with drills, match review, and weekly progress check-ins.",
   },
   {
     year: "2025",
-    title: "Rating Climbs to 500+",
-    description: "Steady improvement translated into measurable results as confidence and consistency rose.",
-  },
-  {
-    year: "2025",
-    title: "Daily Training Locked In",
-    description: "A non-negotiable daily training rhythm became the foundation of long-term progress.",
+    title: "500+ Performance Level",
+    description: "Shot-making consistency and table management improved enough to move into a stronger tier.",
   },
   {
     year: "2026",
-    title: "WPB App Rated 620 and Rising",
-    description: "Momentum accelerated with a major ratings jump and clear signs the ceiling is still moving.",
+    title: "620+ WPB Momentum",
+    description: "Rating gains accelerated, giving fans visible proof of competitive progress.",
   },
   {
     year: "2026",
-    title: "flashgordonpool.com Launched",
-    description: "The comeback story went public with a digital home built to track the road to pro.",
+    title: "Public Platform Launch",
+    description: "Website and social channels aligned into one home for clips, updates, and community engagement.",
   },
   {
     year: "2027+",
-    title: "Pro Tour: The Target",
-    description: "The mission stays clear: earn a seat on tour through relentless reps and elite execution.",
+    title: "Pro Tour Pursuit",
+    description: "The next chapter focuses on higher-level tournament results and sustained tour preparation.",
   },
 ];
 
@@ -46,54 +41,48 @@ export default function Tournaments() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="journey" className="relative py-24 lg:py-32 bg-[#080f18] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_30%_at_50%_10%,rgba(201,168,76,0.09)_0%,transparent_80%)]" />
+    <section id="journey" className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,15,24,0.95),rgba(13,27,42,0.8))]" />
+      <div className="absolute inset-0 grid-bg opacity-20" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.55 }}
           className="text-center mb-14"
         >
-          <span className="section-label">Road Map</span>
-          <h2 className="font-orbitron font-black text-4xl sm:text-5xl mt-2 mb-4">
-            The <span className="text-[#C9A84C] text-shadow-gold">Journey</span>
+          <span className="section-label">Journey Timeline</span>
+          <h2 className="brand-title text-4xl sm:text-5xl text-white mt-2 mb-4">
+            Milestones Fans Can <span className="text-[#C9A84C]">Track</span>
           </h2>
-          <p className="font-exo text-[#9ab0c8] max-w-2xl mx-auto">
-            Not a tournament table. A cinematic progression from first return to pro target, built shot by shot in public.
+          <p className="font-exo text-[#c5d2df] max-w-2xl mx-auto">
+            A transparent timeline of training, competition, and rating growth so the community can follow every step.
           </p>
         </motion.div>
 
         <div className="relative max-w-5xl mx-auto">
-          <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#00BFFF]/20 via-[#00BFFF] to-[#C9A84C]/30" />
+          <div className="absolute left-3 sm:left-1/2 sm:-translate-x-1/2 top-1 bottom-1 w-px bg-gradient-to-b from-[#00BFFF]/20 via-[#00BFFF]/80 to-[#C9A84C]/50" />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {journeyMilestones.map((milestone, index) => {
-              const isRight = index % 2 === 1;
+              const right = index % 2 === 1;
 
               return (
                 <motion.article
-                  key={`${milestone.year}-${milestone.title}`}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={milestone.title}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`relative pl-14 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-8 ${isRight ? "" : ""}`}
+                  transition={{ duration: 0.45, delay: index * 0.07 }}
+                  className="relative sm:grid sm:grid-cols-2 sm:gap-8 pl-10 sm:pl-0"
                 >
-                  <div className={`hidden sm:block ${isRight ? "order-1" : "order-2"}`} />
-
-                  <div
-                    className={`relative rounded-lg border border-[#00BFFF]/20 bg-[#0a1628]/80 p-5 sm:p-6 backdrop-blur-sm ${
-                      isRight ? "sm:order-2" : "sm:order-1"
-                    }`}
-                  >
-                    <p className="font-orbitron text-xs tracking-[0.25em] text-[#00BFFF] uppercase mb-2">{milestone.year}</p>
-                    <h3 className="font-orbitron text-xl text-white font-bold mb-3">{milestone.title}</h3>
-                    <p className="font-exo text-[#9ab0c8] leading-relaxed">{milestone.description}</p>
+                  <div className={`${right ? "sm:order-1" : "sm:order-2"}`} />
+                  <div className={`brand-panel p-5 sm:p-6 ${right ? "sm:order-2" : "sm:order-1"}`}>
+                    <p className="font-orbitron text-xs text-[#00BFFF] tracking-[0.22em] uppercase mb-2">{milestone.year}</p>
+                    <h3 className="brand-title text-xl text-white mb-2">{milestone.title}</h3>
+                    <p className="font-exo text-[#c8d6e3] leading-relaxed">{milestone.description}</p>
                   </div>
-
-                  <div className="absolute left-5 sm:left-1/2 sm:-translate-x-1/2 top-6 w-3.5 h-3.5 rounded-full bg-[#00BFFF] shadow-[0_0_0_4px_rgba(10,22,40,1),0_0_0_8px_rgba(0,191,255,0.28)]" />
+                  <div className="absolute left-3 sm:left-1/2 sm:-translate-x-1/2 top-7 w-3 h-3 rounded-full bg-[#00BFFF] shadow-[0_0_0_5px_rgba(8,15,24,1),0_0_0_8px_rgba(0,191,255,0.25)]" />
                 </motion.article>
               );
             })}

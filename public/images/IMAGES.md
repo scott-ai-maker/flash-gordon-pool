@@ -3,20 +3,26 @@
 Drop your images into this folder with these exact filenames:
 
 ## Hero Section
-- `hero-character.png` — Full-body character art for the hero section (shown in a circle frame)
+- `hero-pro-portrait.jpg` — Primary hero portrait (best at 4:5 or square crop, subject centered)
 
 ## About Section
-- `about-portrait.png` — Portrait photo/art for the About section (3:4 aspect ratio recommended)
+- `about-pro-portrait.jpg` — About portrait (3:4 aspect ratio recommended)
 
 ## Gallery Section
-- `gallery-1.png` — Character Art
-- `gallery-2.png` — Action Shot
-- `gallery-3.png` — Hero Pose (tall/large tile)
-- `gallery-4.png` — Tournament
-- `gallery-5.png` — Event
-- `gallery-6.png` — The Shot
-- `gallery-7.png` — Warrior (tall/large tile)
-- `gallery-8.png` — Precision
+- `gallery-character-poster.jpg` — Character Poster
+- `gallery-action-shot.jpg` — Action Shot
+- `gallery-press-kit.jpg` — Press Kit Portrait (large/tall tile)
+- `gallery-tournament-atmosphere.jpg` — Tournament Atmosphere
+- `gallery-fan-community.jpg` — Fan Community
+- `gallery-closeup-precision.jpg` — Closeup Precision
+- `gallery-social-brand-style.jpg` — Social Brand Style (large/tall tile)
+- `gallery-sponsor-background.jpg` — Sponsor Background
 
 All images are displayed with `object-cover`, so any aspect ratio works.
 Recommended: PNG or WebP, at least 800px wide for gallery items.
+
+## Fast Import Workflow
+1. Export your selected Leonardo images.
+2. Rename each image to the exact filenames above.
+3. Replace the existing files in this folder.
+4. Refresh the site and verify crops on desktop and mobile.
