@@ -15,8 +15,6 @@ Drop your images into this folder with these exact filenames:
 - `gallery-tournament-atmosphere.jpg` — Tournament Atmosphere
 - `gallery-fan-community.jpg` — Fan Community
 - `gallery-closeup-precision.jpg` — Closeup Precision
-- `gallery-social-brand-style.jpg` — Social Brand Style (large/tall tile)
-- `gallery-sponsor-background.jpg` — Sponsor Background
 
 All images are displayed with `object-cover`, so any aspect ratio works.
 Recommended: PNG or WebP, at least 800px wide for gallery items.

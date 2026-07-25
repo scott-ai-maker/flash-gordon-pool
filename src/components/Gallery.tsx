@@ -20,8 +20,6 @@ const items: GalleryItem[] = [
   { src: "/images/gallery-tournament-atmosphere.jpg", alt: "Flash Gordon Pool — Tournament Atmosphere", label: "Tournament Atmosphere", category: "events", focusClass: "object-center" },
   { src: "/images/gallery-fan-community.jpg", alt: "Flash Gordon Pool — Community Event", label: "Community Event", category: "events", focusClass: "object-center" },
   { src: "/images/gallery-closeup-precision.jpg", alt: "Flash Gordon Pool — Shot Precision", label: "Shot Precision", category: "action", focusClass: "object-center" },
-  { src: "/images/gallery-social-brand-style.jpg", alt: "Flash Gordon Pool — Fan Favorite Visual", label: "Fan Favorite Visual", category: "character", large: true, focusClass: "object-center" },
-  { src: "/images/gallery-sponsor-background.jpg", alt: "Flash Gordon Pool — Partner Creative", label: "Partner Creative", category: "action", focusClass: "object-center" },
 ];
 
 const filters = [
@@ -58,6 +56,9 @@ export default function Gallery() {
           </h2>
           <p className="font-exo text-[#c4d2de] max-w-xl mx-auto">
             A curated mix of competition images, behind-the-scenes highlights, and shareable fan content.
+          </p>
+          <p className="font-exo text-xs sm:text-sm text-[#9cb2c8] max-w-2xl mx-auto mt-4">
+            Image disclosure: Gallery visuals are AI-generated concept renders for brand storytelling and promotional design. They are not presented as documentary match photography.
           </p>
         </motion.div>
 
