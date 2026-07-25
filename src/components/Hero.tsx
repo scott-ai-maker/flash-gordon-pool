@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 
 const sponsorProof = [
   { label: "Years at the table", value: "15+" },
@@ -56,6 +57,7 @@ export default function Hero() {
             >
               <a
                 href="#contact"
+                onClick={() => trackEvent("cta_click", { location: "hero", cta: "join_the_journey" })}
                 className="font-orbitron text-xs sm:text-sm font-bold tracking-[0.15em] uppercase px-6 py-3 rounded-full bg-[#00BFFF] text-black hover:bg-white transition-colors"
               >
                 Join The Journey
@@ -64,6 +66,7 @@ export default function Hero() {
                 href="https://www.youtube.com/@FlashGordonPool"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("cta_click", { location: "hero", cta: "watch_match_clips" })}
                 className="font-orbitron text-xs sm:text-sm font-bold tracking-[0.15em] uppercase px-6 py-3 rounded-full border border-[#C9A84C]/80 text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors"
               >
                 Watch Match Clips

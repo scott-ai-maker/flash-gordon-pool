@@ -36,6 +36,14 @@ const journeyMilestones = [
   },
 ];
 
+const recentResults = [
+  { date: "2026-07-06", event: "NE 9-Ball Weekly", opponent: "Race vs A-Level", result: "W 7-5" },
+  { date: "2026-07-11", event: "Regional Open Qualifier", opponent: "First Round", result: "W 9-6" },
+  { date: "2026-07-18", event: "Regional Open Qualifier", opponent: "Quarterfinal", result: "L 6-9" },
+];
+
+const resultsUpdatedAt = "2026-07-24";
+
 export default function Tournaments() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -88,6 +96,39 @@ export default function Tournaments() {
             })}
           </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.45, delay: 0.22 }}
+          className="mt-14"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
+            <h3 className="brand-title text-2xl text-white">Recent Results</h3>
+            <p className="font-exo text-xs text-[#9db3c9]">Last updated: {resultsUpdatedAt}</p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-[#00BFFF]/20 bg-[#081221]/70">
+            <div className="grid grid-cols-[0.95fr_1.2fr_1fr_0.65fr] gap-3 px-4 sm:px-5 py-3 border-b border-[#00BFFF]/15 font-orbitron text-[10px] sm:text-xs uppercase tracking-[0.16em] text-[#9fb6cd]">
+              <span>Date</span>
+              <span>Event</span>
+              <span>Match</span>
+              <span>Result</span>
+            </div>
+
+            {recentResults.map((entry) => (
+              <div
+                key={`${entry.date}-${entry.event}-${entry.opponent}`}
+                className="grid grid-cols-[0.95fr_1.2fr_1fr_0.65fr] gap-3 px-4 sm:px-5 py-3 border-b border-[#00BFFF]/10 last:border-b-0"
+              >
+                <p className="font-exo text-sm text-[#c9d7e4]">{entry.date}</p>
+                <p className="font-exo text-sm text-white">{entry.event}</p>
+                <p className="font-exo text-sm text-[#c9d7e4]">{entry.opponent}</p>
+                <p className="font-orbitron text-xs sm:text-sm text-[#00BFFF]">{entry.result}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

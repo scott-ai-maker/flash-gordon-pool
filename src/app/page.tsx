@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import FeaturedClip from "@/components/FeaturedClip";
 import About from "@/components/About";
 import Tournaments from "@/components/Tournaments";
 import Gallery from "@/components/Gallery";
@@ -11,6 +12,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <FeaturedClip />
       <About />
       <Tournaments />
       <Gallery />

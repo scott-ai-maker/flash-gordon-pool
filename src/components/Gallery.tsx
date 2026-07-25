@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 
 type GalleryItem = {
   src: string;
@@ -98,7 +99,10 @@ export default function Gallery() {
                 className={`relative overflow-hidden rounded-xl border border-[#00BFFF]/18 bg-[#0b1522] cursor-pointer group ${
                   item.large ? "row-span-2" : ""
                 }`}
-                onClick={() => setLightbox(item)}
+                onClick={() => {
+                  trackEvent("gallery_item_open", { label: item.label, category: item.category });
+                  setLightbox(item);
+                }}
               >
                 <Image
                   src={item.src}
@@ -122,6 +126,10 @@ export default function Gallery() {
                   <span className="font-orbitron text-xs text-[#00BFFF] tracking-wider uppercase">{item.label}</span>
                 </div>
 
+                <span className="absolute top-2 left-2 rounded-full border border-[#00BFFF]/35 bg-[#081221]/85 px-2 py-1 font-orbitron text-[9px] tracking-[0.12em] uppercase text-[#9fd4ff]">
+                  AI Concept
+                </span>
+
                 {/* Border glow on hover */}
                 <div className="absolute inset-0 border border-[#00BFFF]/0 group-hover:border-[#00BFFF]/55 rounded-xl transition-all duration-300" />
               </motion.div>
@@ -138,6 +146,7 @@ export default function Gallery() {
         >
           <a
             href="#contact"
+            onClick={() => trackEvent("cta_click", { location: "gallery", cta: "join_for_more_updates" })}
             className="inline-block font-orbitron text-sm font-bold tracking-[0.15em] uppercase px-8 py-4 rounded-full border border-[#00BFFF]/50 text-[#00BFFF] hover:bg-[#00BFFF]/10 hover:border-[#00BFFF] transition-all duration-300"
           >
             Join For More Updates

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
 
 const socialLinks = [
   { name: "YouTube", href: "https://www.youtube.com/@FlashGordonPool" },
@@ -15,10 +16,13 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [briefEmail, setBriefEmail] = useState("");
   const [joinedBrief, setJoinedBrief] = useState(false);
+  const [subscriptionStarted, setSubscriptionStarted] = useState(false);
 
   const handleMissionBriefSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!briefEmail) return;
+
+    trackEvent("subscription_submit", { location: "contact", form: "player_update_list" });
 
     const subject = encodeURIComponent("Mission Brief Signup");
     const body = encodeURIComponent(
@@ -26,8 +30,10 @@ export default function Contact() {
     );
 
     window.location.href = `mailto:flash@flashgordonpool.com?subject=${subject}&body=${body}`;
+    trackEvent("subscription_complete", { location: "contact", form: "player_update_list" });
     setJoinedBrief(true);
     setBriefEmail("");
+    setSubscriptionStarted(false);
   };
 
   return (
@@ -79,12 +85,14 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-3">
               <a
                 href="mailto:flash@flashgordonpool.com?subject=Sponsor%20Inquiry"
+                onClick={() => trackEvent("cta_click", { location: "contact", cta: "partnership_inquiry" })}
                 className="font-orbitron text-xs font-bold tracking-[0.15em] uppercase text-center px-4 py-3 rounded-full bg-[#00BFFF] text-black hover:bg-white transition-colors"
               >
                 Partnership Inquiry
               </a>
               <a
                 href="mailto:flash@flashgordonpool.com?subject=Media%20Request"
+                onClick={() => trackEvent("cta_click", { location: "contact", cta: "media_booking" })}
                 className="font-orbitron text-xs font-bold tracking-[0.15em] uppercase text-center px-4 py-3 rounded-full border border-[#C9A84C]/70 text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors"
               >
                 Media Booking
@@ -115,6 +123,12 @@ export default function Contact() {
                   required
                   value={briefEmail}
                   onChange={(e) => setBriefEmail(e.target.value)}
+                  onFocus={() => {
+                    if (!subscriptionStarted) {
+                      trackEvent("subscription_start", { location: "contact", form: "player_update_list" });
+                      setSubscriptionStarted(true);
+                    }
+                  }}
                   placeholder="you@example.com"
                   className="flex-1 bg-[#080f18]/80 border border-[#00BFFF]/20 rounded-full px-4 py-3 font-exo text-white placeholder-[#9ab0c8]/50 focus:outline-none focus:border-[#00BFFF]/60 transition-colors"
                 />
